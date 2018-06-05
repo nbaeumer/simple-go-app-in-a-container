@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "go get github.com/gorilla/mux"
       - go get github.com/gorilla/mux
   build:
     commands:

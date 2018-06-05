@@ -10,6 +10,4 @@ phases:
 
 artifacts:
   files:
-    - simple-app
-    - docker/Dockerfile
-    - docker/buildspec.yml
+    - docker/*

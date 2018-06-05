@@ -2,4 +2,4 @@ version: 0.2
 
 phases:
   build:
-    - docker build -t simpleapp .
+    - docker build -t simpleapp ./docker

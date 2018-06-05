@@ -6,10 +6,10 @@ phases:
       - go get github.com/gorilla/mux
   build:
     commands:
-      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o simple-app ./go/main.go
+      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./docker/simple-app ./go/main.go
 
 artifacts:
   files:
     - simple-app
     - docker/Dockerfile
-    - docker/buildspec-docker.yml
+    - docker/buildspec.yml

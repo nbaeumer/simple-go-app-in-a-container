@@ -1,0 +1,6 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o simple-app ./main.go

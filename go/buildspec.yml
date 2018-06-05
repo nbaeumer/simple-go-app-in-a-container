@@ -9,5 +9,7 @@ phases:
       - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./docker/simple-app ./go/main.go
 
 artifacts:
+  type : zip
   files:
     - docker/*
+  base-directory : 'docker'

@@ -2,4 +2,5 @@ version: 0.2
 
 phases:
   build:
+    - echo $CODEBUILD_SRC_DIR
     - docker build -t simpleapp ./docker

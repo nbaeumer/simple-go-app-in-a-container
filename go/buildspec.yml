@@ -6,9 +6,11 @@ phases:
       - go get github.com/gorilla/mux
   build:
     commands:
+      - echo $CODEBUILD_SRC_DIR
       - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./docker/simple-app ./go/main.go
 
 artifacts:
   files:
     - docker/*
   discard-paths: yes
+#  base-directory: docker

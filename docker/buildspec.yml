@@ -1,6 +1,21 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo $DOWNLOAD_SOURCE
+  pre_build:
+    commands:
+      - echo Logging into Amzon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   build:
-    - echo $CODEBUILD_SRC_DIR
-    - docker build -t simpleapp ./docker
+    commands:
+      - echo Build started on `date`
+      - echo Building the docker image...
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG ./docker
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG

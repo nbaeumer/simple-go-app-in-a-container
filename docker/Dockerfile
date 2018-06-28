@@ -4,7 +4,7 @@
 
 FROM scratch
 
-ADD simple-app ./
+COPY simple-app ./
 
 EXPOSE 8080
 
